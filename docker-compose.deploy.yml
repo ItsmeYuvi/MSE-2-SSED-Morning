@@ -31,7 +31,7 @@ services:
       - taskflow-network
 
   backend:
-    image: ${DOCKERHUB_USERNAME}/taskflow-backend:latest
+    image: ${DOCKERHUB_USERNAME:-itsmeyuvi}/backend:latest
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -55,7 +55,7 @@ services:
       - taskflow-network
 
   frontend:
-    image: ${DOCKERHUB_USERNAME}/taskflow-frontend:latest
+    image: ${DOCKERHUB_USERNAME:-itsmeyuvi}/frontend:latest
     restart: unless-stopped
     ports:
       - "8080:80"
