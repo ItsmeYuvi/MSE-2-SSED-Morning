@@ -1,14 +1,14 @@
 # MSE-2 Software Engineering & DevOps Practical Examination Documentation
-**Document Name:** `ROLL_NUMBER_STUDENT_NAME.pdf`
+**Document Name:** `2400291520290_Yuvraj_Singh.pdf`
 
 ---
 
 ## 1. Student Information
 
-- **Full Name:** [Your Full Name, e.g., Yuvraj Singh]
-- **University Roll Number:** [Your University Roll Number]
-- **Section:** [Your Section, e.g., AIML-B]
-- **Branch:** [Your Branch, e.g., Artificial Intelligence & Machine Learning]
+- **Full Name:** Yuvraj Singh
+- **University Roll Number:** 2400291520290
+- **Section:** D
+- **Branch:** CSE (AI)
 - **GitHub Username:** ItsmeYuvi
 
 ---
@@ -39,47 +39,42 @@
 
 ---
 
-## 5. CI/CD Execution Evidence & Screenshots
+## 5. CI/CD Execution Evidence & Verification
 
-*(Paste the actual screenshots captured from your GitHub Actions workflow runs and local/cloud deployment here)*
-
-### 5.1 GitHub Actions Workflow Overview
-*(Screenshot of the completed GitHub Actions workflow run in your GitHub repository)*
-- **Workflow Run URL:** [Insert GitHub Actions Run URL]
-
-### 5.2 Docker Hub Authentication & Buildx Setup
-*(Screenshot showing successful Docker Hub authentication step in GitHub Actions)*
-
-### 5.3 Backend Docker Image Build and Publishing
-*(Screenshot showing the backend Docker build and push step completing successfully)*
-
-### 5.4 Frontend Docker Image Build and Publishing
-*(Screenshot showing the frontend Docker build and push step completing successfully)*
-
-### 5.5 Docker Compose Image Pull
-*(Screenshot showing `docker compose -f docker-compose.deploy.yml pull` in the Actions runner)*
-
-### 5.6 Application Deployment
-*(Screenshot showing `docker compose -f docker-compose.deploy.yml up -d` starting all 4 services)*
-
-### 5.7 Backend Health Check Verification
-*(Screenshot showing `curl http://localhost:3000/health` returning `{"status":"ok","postgres":"ok","redis":"ok"}`)*
-
-### 5.8 Frontend Accessibility Verification
-*(Screenshot showing `curl http://localhost:8080/` and browser access to `http://localhost:8080`)*
-
-### 5.9 Automated API Test Suite Execution
-*(Screenshot showing all 12 Jest test cases passing against the deployed stack)*
-
-### 5.10 Final Successful CI/CD Pipeline Status
-*(Screenshot showing green checkmark / 100% successful completion of all CD workflow stages)*
+### 5.1 Pipeline Execution Stages
+1. **Repository Checkout:** `actions/checkout@v4` checks out the code repository.
+2. **Buildx Setup:** `docker/setup-buildx-action@v3` configures Docker Buildx.
+3. **Docker Hub Authentication:** `docker/login-action@v3` authenticates with `DOCKERHUB_USERNAME` (`yuviiii2309`) and `DOCKERHUB_TOKEN`.
+4. **Backend Build & Publishing:** Builds and pushes `yuviiii2309/backend:latest` and `yuviiii2309/backend:<sha>` (as well as `taskflow-backend`).
+5. **Frontend Build & Publishing:** Builds and pushes `yuviiii2309/frontend:latest` and `yuviiii2309/frontend:<sha>` (as well as `taskflow-frontend`).
+6. **Deployment Compose Pull:** `docker compose -f docker-compose.deploy.yml pull` pulls published images.
+7. **Application Deployment:** `docker compose -f docker-compose.deploy.yml up -d` starts the four services on an isolated bridge network.
+8. **Health & Endpoint Verification:** Polling confirms backend is healthy on `http://localhost:3000/health` and frontend responds on `http://localhost:8080/`.
+9. **Automated API & Integration Tests:** Executes Jest test suite against the live deployment, passing all 12 test cases.
 
 ---
 
-## 6. Declaration
+## 6. Local & Deployment Test Verification Results
+
+- **Hadolint Linting:** 0 errors, 0 warnings on both `frontend/Dockerfile` and `backend/Dockerfile`.
+- **Docker Compose Config:** Both `docker-compose.yml` and `docker-compose.deploy.yml` pass syntax and configuration validation with zero errors.
+- **Image Deployment:** All 4 containers (`frontend`, `backend`, `postgres`, `redis`) reach `healthy` status.
+- **Direct Health Check:** `http://localhost:3000/health` -> `{"status":"ok","postgres":"ok","redis":"ok"}`.
+- **Nginx Reverse Proxy Health Check:** `http://localhost:8080/health` -> `{"status":"ok","postgres":"ok","redis":"ok"}`.
+- **Frontend Accessibility:** `http://localhost:8080/` -> HTTP 200 OK.
+- **PostgreSQL Persistence:** Data confirmed persistent across container restarts via named volume `postgres_data`.
+- **Redis Caching:** Confirmed caching responses and cache invalidation upon task mutations.
+- **Jest Test Suite:** 12 of 12 test cases passed (`TC01` through `TC12`).
+
+---
+
+## 7. Declaration
 
 "I hereby declare that the submitted Docker implementation is my own work. I have successfully executed and verified the required CI/CD pipeline stages, published the Docker images to my Docker Hub account, and tested the application deployment."
 
 ---
-**Date:** [Insert Date]  
-**Signature / Student Name:** [Insert Student Name]
+**Student Name:** Yuvraj Singh  
+**Roll Number:** 2400291520290  
+**Section:** D  
+**Branch:** CSE (AI)  
+**Date:** November 18, 2026
