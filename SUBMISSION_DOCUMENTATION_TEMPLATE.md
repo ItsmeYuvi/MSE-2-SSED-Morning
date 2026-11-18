@@ -23,9 +23,9 @@
 
 ## 3. Docker Hub Details
 
-- **Docker Hub Username:** [Your Docker Hub Username, e.g., ItsmeYuvi]
-- **Frontend Docker Image URL:** https://hub.docker.com/r/ItsmeYuvi/taskflow-frontend (or `ItsmeYuvi/frontend`)
-- **Backend Docker Image URL:** https://hub.docker.com/r/ItsmeYuvi/taskflow-backend (or `ItsmeYuvi/backend`)
+- **Docker Hub Username:** yuviiii2309
+- **Frontend Docker Image URL:** https://hub.docker.com/r/yuviiii2309/frontend
+- **Backend Docker Image URL:** https://hub.docker.com/r/yuviiii2309/backend
 
 ---
 
